@@ -15,8 +15,8 @@
 	<!-- PROPERTIES -->
 	<properties>
 		<jdk.version>1.8</jdk.version>
-		<spring.version>4.3.16.RELEASE</spring.version>
-		<jackson.version>2.9.8</jackson.version>
+		<spring.version>4.3.18.RELEASE</spring.version>
+		<jackson.version>2.9.9</jackson.version>
 		<jstl.version>1.2</jstl.version>
 		<junit.version>4.11</junit.version>
 		<logback.version>1.0.13</logback.version>
