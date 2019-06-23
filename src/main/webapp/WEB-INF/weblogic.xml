@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app">
+	<session-descriptor>
+		<timeout-secs>3600</timeout-secs>
+		<invalidation-interval-secs>60</invalidation-interval-secs>
+		<debug-enabled>false</debug-enabled>
+		<cookie-http-only>true</cookie-http-only>
+		<persistent-store-type>memory</persistent-store-type>
+	</session-descriptor>
+	<context-root>GeoData</context-root>
+	<container-descriptor>
+    		<prefer-web-inf-classes>true</prefer-web-inf-classes>
+    	</container-descriptor>
+  	<resource-description>
+  		<res-ref-name>DataDS</res-ref-name>
+  		<jndi-name>DataDS</jndi-name>
+  	</resource-description>
+</weblogic-web-app>

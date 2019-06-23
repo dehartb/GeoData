@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="geoData" ng-controller="baseController">
+    <head> 
+        <!-- Angular Scripts -->
+        <script src="scripts/angular-1.2.32/angular.js"></script>
+        <script src="scripts/checklist-model/checklist-model.js"></script>
+              
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="scripts/bootstrap-4.0.0-beta-dist/css/bootstrap.css"/>
+        
+        <!-- Local Scripts -->
+        <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript" src="services/DataService.js"></script> 
+        
+        <title>GeoData</title>
+    </head>
+    <body>
+	    	<div>
+	        Hello world
+	        <p id="cn"> Click on the button to change the light button</p>
+	        <button type="button" ng-click="changefont()">Click</button>
+	        <p>{{totalTodos}}</p>
+	        
+	        
+	        <button type="button" ng-click="getItems()">Populate Items</button>
+	        
+	        
+	        <p>Select Items: <select ng-model="selectedItem" ng-options="x.itemName for x in Items" 
+	        		ng-change="getAreas(selectedItem.itemCode)">
+			</select>
+			</p>
+			
+			<p>You selected: {{selectedItem.itemName}}</p>
+			<p>Its value is: {{selectedItem.itemCode}}</p>
+			
+			<p>Select Area: <select ng-model="selectedArea" ng-options="x.areaName for x in Areas" 
+				ng-change="getYears(selectedItem.itemCode, selectedArea.areaCode)">
+			</select>
+			</p>
+			<p>You selected: {{selectedArea.areaName}}</p>
+			<p>Its value is: {{selectedArea.areaCode}}</p>
+			
+			<select ng-model="selectedYear" ng-options="x.year for x in Years">
+			</select>
+			<p>You selected: {{selectedYear.year}}</p>
+			<p>Its value is: {{selectedYear.yearId}}</p>
+			
+			<button type="button" ng-click="checkAll()">Check All</button>
+			<label ng-repeat="year in Years">
+  				<input type="checkbox" data-checklist-model="User.Years" data-checklist-value="year.yearId" ng-model="justAnotherCheckedVar"> {{year.year}}
+			</label>
+    		</div>
+    </body>
+</html>

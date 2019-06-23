@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:p="http://www.springframework.org/schema/p" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:flex="http://www.springframework.org/schema/flex"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.1.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+    http://www.springframework.org/schema/flex
+    http://www.springframework.org/schema/flex/spring-flex-1.0.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-3.1.xsd" default-init-method="init">
+
+<bean
+class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    <mvc:annotation-driven />
+    <context:annotation-config />
+    <context:component-scan base-package="com.dehart" />
+    <context:component-scan base-package="com.dehart.controller" />
+    <context:component-scan base-package="com.dehart.dao" />
+    <context:component-scan base-package="com.dehart.services" />
+    
+    <import resource="mvc-dispatcher-servlet.xml"/>
+
+	<!-- DATASOURCE DECLARATIONS -->
+    <bean id="DataDS" class="org.springframework.jndi.JndiObjectFactoryBean">
+        <property name="jndiName" value="DataDS" />
+    </bean>
+
+	<!-- DAO DECLARATIONS -->
+    <bean id="dataDAO" class="com.dehart.dao.BLSDAO">
+        <property name="dataSource" ref="DataDS" />
+    </bean>
+    
+    <!-- SERVICE DECLARATIONS -->
+    <bean id="dataService" class="com.dehart.services.DataServiceImpl" 
+    	init-method="init" />
+
+</beans>
